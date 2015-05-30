@@ -1,0 +1,21 @@
+---
+
+- name: add go group
+  sudo: yes
+  group:
+    name: "{{ gocd_agent.group }}"
+    state: present
+
+- name: add go user
+  sudo: yes
+  user:
+    name: "{{ gocd_agent.user }}"
+    comment: Go CD User
+    group: "{{ gocd_agent.group }}"
+    home: "{{ gocd_agent.user_dir }}"
+
+- name: install go server
+  include: install.yml
+
+- name: install go server
+  include: configure.yml

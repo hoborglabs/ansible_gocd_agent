@@ -1,0 +1,21 @@
+---
+
+- name: create various directories
+  sudo: yes
+  file:
+    path: "{{ gocd_agent.user_dir }}/{{ item }}"
+    state: directory
+    owner: "{{ gocd_agent.user }}"
+    group: "{{ gocd_agent.group }}"
+  with_items:
+    - work/go-agent-{{ gocd_agent.name }}
+
+- name: Ensures go-agent configuration
+  sudo: yes
+  template:
+    src: defaults.j2
+    dest: /etc/default/go-agent
+    owner: "{{ gocd_agent.user }}"
+    group: "{{ gocd_agent.group }}"
+  notify:
+    - restart go-agent

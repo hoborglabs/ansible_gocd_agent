@@ -1,0 +1,16 @@
+---
+
+gocd_agent:
+  version: "14.4.*"
+
+  group: go
+  name: default
+  user: go
+  user_dir: /home/go
+
+  java_home: /usr/lib/jvm/java-7-oracle/jre
+  server: localhost
+  port: 8153
+
+  agent_max_mem: 256m
+  agent_mem: 128m
