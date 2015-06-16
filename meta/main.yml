@@ -12,5 +12,4 @@ galaxy_info:
   categories:
     - development
 
-dependencies:
-  - java
+dependencies: []
